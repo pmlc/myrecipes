@@ -1,5 +1,4 @@
 class Chef < ActiveRecord::Base
-
   has_many :recipes
 
   before_save { self.email = email.downcase }
