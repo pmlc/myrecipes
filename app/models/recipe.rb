@@ -1,4 +1,4 @@
-class Recipe < ActiveRecord::Base
+name: 'name', summaryclass Recipe < ActiveRecord::Base
 
   belongs_to :chef
 
