@@ -9,9 +9,7 @@ class RecipesController < ApplicationController
   end
   
   def create
-    
     @recipe = Recipe.new(recipe_params)
-    
     # @recipe.chef = current_user
     @recipe.chef = Chef.find(1)
     if @recipe.save
@@ -23,14 +21,22 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      flash[:success] = "Your recipe was updated succesfully!"
+      redirect_to recipes_path(@recipe)
+    else
+      render :edit
+    end
   end
 
   def show
     # binding.pry
     @recipe = Recipe.find(params[:id]) 
-  end
-
-  def update
   end
 
   def destroy
