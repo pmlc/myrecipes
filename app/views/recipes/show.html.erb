@@ -1,6 +1,6 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
- <div class="row">
+<div class="row">
   <div class="col-md-4 pull-right center">
     <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
     <p>
@@ -8,17 +8,64 @@
     </p>
   </div>
   <div class="col-md-8">
-    <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), 
-      class: "btn btn-success pull-right" %>
+    
+    <%
+=begin %>
+    <% if logged_in? and (@recipe.chef == current_user || current_user.admin?) %>
+      <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+    <% end %> 
+    <% if logged_in? and current_user.admin? %>
+      <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  <%
+=end %>
+    
     <h3><%= @recipe.summary %></h3>
-    <span class="show_recipe">
+    <div class="show_recipe">
       <%= image_tag(@recipe.picture.url, class: "gravatar") if @recipe.picture? %>
-    </span>
+    </div>
     <div class="well">
+ 
+ <%
+=begin %>     
+      <% if @recipe.styles.any? %>
+        <p>Styles: <%= render @recipe.styles %></p>
+      <% end %>
+      
+      <% if @recipe.ingredients.any? %>
+        <p>Ingredients: <%= render @recipe.ingredients %></p>
+      <% end %>
+      <p>
+        <strong>Steps:</strong>
+      </p>
+    <%
+=end %>
+
       <%= simple_format(@recipe.description) %>
+      <div class="pull-right">
+        
+         <%= link_to "" do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp&nbsp&nbsp&nbsp
+        <% end %> 
+        <%= link_to "" do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp&nbsp&nbsp&nbsp
+        <% end %> 
+       
+        
+ <%
+=begin %> 
+        <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= @recipe.thumbs_up_total %>
+        <% end %> &nbsp&nbsp&nbsp&nbsp
+        <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= @recipe.thumbs_down_total %>
+        <% end %>
+    <%
+=end %>
+        
+      </div>
     </div>
   </div>
-  
 </div>
 
 <h5><%= link_to "Return to Recipes Listing", recipes_path, class: "btn btn-warning btn-small" %></h5>

@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 # added for Carrier Magic development environment 
-require ‘carrierwave/orm/activerecord’
+require 'carrierwave/orm/activerecord'
