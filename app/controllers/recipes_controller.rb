@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
   
   def index
     @recipes = Recipe.all
+    @recipes = Recipe.paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -49,11 +50,10 @@ class RecipesController < ApplicationController
     like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
     if like.valid?
       flash[:success] = "Your selection was succesful"
-      redirect_to :back
     else
       flash[:danger] = "You can only like a recipe once"
-      redirect_to :back
     end
+    redirect_to :back
   end
 
   def destroy
