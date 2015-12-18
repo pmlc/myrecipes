@@ -6,5 +6,7 @@ class Like < ActiveRecord::Base
   validates :chef_id, presence: true
   validates :recipe_id, presence: true
   
+  validates_uniqueness_of :chef
+  
   
  end
