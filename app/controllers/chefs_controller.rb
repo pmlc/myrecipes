@@ -1,6 +1,6 @@
 class ChefsController < ApplicationController
 
-  #before_action :set_chef, only: [:edit, :update, :show]
+  before_action :set_chef, only: [:edit, :update, :show]
   #before_action :require_same_user, only: [:edit, :update]
 
   def index
@@ -27,7 +27,7 @@ class ChefsController < ApplicationController
   end
 
   def update
-    @chef = Chef.find(chef_params[:id])
+    #@chef = Chef.find(chef_params[:id])
     if @chef.update(chef_params)
       flash[:success] = "Your profile/logon was updated succesfully!"
       redirect_to chefs_path(@chef)
@@ -37,7 +37,7 @@ class ChefsController < ApplicationController
   end
 
   def show
-    ##binding.pry
+    ##binding.pry   / params
     @chef = Chef.find(params[:id]) 
     
     @recipes = @chef.recipes.paginate(page: params[:page], per_page: 3)
