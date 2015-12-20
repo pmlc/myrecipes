@@ -7,21 +7,6 @@ class ChefsController < ApplicationController
     @chefs = Chef.paginate(page: params[:page], per_page: 4)
   end
 
-  def new
-    @chef = Chef.new
-  end
-  
-  def create
-    @chef = Chef.new(chef_params)
-    if @chef.save
-      flash[:success] = "Your profile/logon was created succesfully!"
-      session[:chef_id] = @chef.id
-      redirect_to recipes_path
-    else
-      render :new
-    end
-  end
-
   def edit
     @chef = Chef.find(params[:id])
   end
