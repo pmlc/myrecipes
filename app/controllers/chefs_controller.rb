@@ -28,7 +28,7 @@ def create
   def update
     if @chef.update(chef_params)
       flash[:success] = "Your profile/logon was updated succesfully!"
-      redirect_to chefs_path(@chef)
+      redirect_to chef_path(@chef)
     else
       render :edit
     end

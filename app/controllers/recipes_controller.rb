@@ -42,7 +42,6 @@ class RecipesController < ApplicationController
   end
 
   def like
-    current_user = Chef.first
     like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
     if like.valid?
       flash[:success] = "Your selection was succesful"
