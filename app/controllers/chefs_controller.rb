@@ -1,7 +1,6 @@
 class ChefsController < ApplicationController
-
-  before_action :set_chef, only: [:edit, :update, :show]
-  #before_action :require_same_user, only: [:edit, :update]
+  before_action :set_chef, only:[:edit, :update, :show]
+  before_action :require_same_user, only:[:edit, :update]
 
   def index
     @chefs = Chef.paginate(page: params[:page], per_page: 4)
@@ -27,7 +26,6 @@ def create
   end
 
   def update
-    #@chef = Chef.find(chef_params[:id])
     if @chef.update(chef_params)
       flash[:success] = "Your profile/logon was updated succesfully!"
       redirect_to chefs_path(@chef)
