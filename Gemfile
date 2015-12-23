@@ -16,7 +16,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '3.1.7'
 #gem 'fog', '1.23.0'
-#gem 'fog', '1.35.0'
+gem 'fog', '1.35.0'
+gem 'net-ssh'
 
 gem 'sdoc', '~> 0.4.0', group: :doct
 
