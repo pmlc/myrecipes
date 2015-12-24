@@ -15,8 +15,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '3.1.7'
-#gem 'fog', '1.23.0'
-gem 'fog', '1.35.0'
+gem 'fog', '1.23.0'
+#git gem 'fog', '1.35.0'
 gem 'net-ssh'
 
 gem 'sdoc', '~> 0.4.0', group: :doct
@@ -25,7 +25,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'byebug'
-  #  gem 'web-console', '~> 2.0'
+  # gem 'web-console', '~> 2.0'
 end
 
 group :production do
