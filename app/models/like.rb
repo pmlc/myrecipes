@@ -8,5 +8,4 @@ class Like < ActiveRecord::Base
   
   validates_uniqueness_of :chef, scope: :recipe
   
-  
  end
