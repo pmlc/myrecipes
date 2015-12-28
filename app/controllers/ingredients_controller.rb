@@ -16,10 +16,10 @@ before_action :require_user, except: [:show]
   end
   
   def show
-    @Ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
     @recipes = @ingredient.recipes.paginate(page: params[:page], per_page: 4)
   end
-  
+ 
   private
 
     def ingredient_params
