@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-before_action :require_user, except: [:show]
+before_action :require_user, only: [:new, :create]
 
   def new
     @ingredient = Ingredient.new
@@ -25,5 +25,5 @@ before_action :require_user, except: [:show]
     def ingredient_params
       params.require(:ingredient).permit(:name)  
     end
-  
+ 
  end

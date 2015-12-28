@@ -13,10 +13,14 @@
       <%= f.text_area :description, rows: 10 %>
       
       <strong>Styles:</strong>
-      <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
-        <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+      <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |xx| %>
+        <% xx.label(class: "checkbox-inline input_checkbox") {xx.check_box(class: "checkbox") + xx.text} %>
       <% end %>
       <br><br>
+      <strong>Ingredients:</strong>
+      <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |yy| %>
+        <% yy.label(class: "checkbox-inline input_checkbox") {yy.check_box(class: "checkbox") + yy.text} %>
+      <% end %>
       
       <br><br>
       <span class="picture">
