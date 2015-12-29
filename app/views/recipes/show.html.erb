@@ -8,7 +8,7 @@
     </p>
   </div>
     <div class="col-md-8">
-      <% if logged_in? and current_user.id == @recipe.chef_id %> 
+      <% if logged_in? and ( current_user.id == @recipe.chef_id  || current_user.admin? ) %> 
         <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success" %>
         &nbsp&nbsp&nbsp
         <%= link_to "Destroy this Recipe", recipe_path(@recipe), class: "btn btn-warning" ,
