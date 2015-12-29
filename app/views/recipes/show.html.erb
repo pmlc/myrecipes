@@ -8,8 +8,12 @@
     </p>
   </div>
     <div class="col-md-8">
-      <% if logged_in? and current_user.id == @recipe.chef_id %>
-        <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
+      <% if logged_in? and current_user.id == @recipe.chef_id %> 
+        <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success" %>
+        &nbsp&nbsp&nbsp
+        <%= link_to "Destroy this Recipe", recipe_path(@recipe), class: "btn btn-warning" ,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
       <% end %>
     <h3><%= @recipe.summary %></h3>
     <div class="show_recipe">
