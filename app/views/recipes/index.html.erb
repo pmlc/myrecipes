@@ -14,11 +14,12 @@
 <% @recipes.each do |recipe| %>
   <div class="row">
     
-    <div class="col-md-2">
-      <section class="chef_info center">
-        <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
-        <h5>Chef name: <%= recipe.chef.chefname %></h5>
-      </section>
+    <div class="col-md-4">
+      <% if recipe.picture? %>
+        <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") %>
+      <% else %>
+        <p> recipe picture has not been loaded </p>
+      <% end %>
     </div>
     
     <div class="col-lg-6 well">
@@ -40,8 +41,12 @@
         <% end %> &nbsp&nbsp&nbsp&nbsp
       </div>
     </div>
-    <div class="col-md-4">
-      <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
+    
+    <div class="col-md-2">
+      <section class="chef_info center">
+        <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
+        <h5>Chef name: <%= recipe.chef.chefname %></h5>
+      </section>
     </div>
     
   </div>

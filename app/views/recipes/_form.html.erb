@@ -26,8 +26,11 @@
       <span class="picture">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
       </span>
-      
-      <br><br>
+      <span>
+        loading photo of recipes if photo format not recognized <br>
+        use http://image.online-convert.com/convert-to-gif to convert your image to jpg jpeg gif or png format 
+      </span>
+      <br><br><br>
       
       <%= f.submit(@recipe.new_record? ? 'Create Recipe' : 'Save Edits', class: "btn btn-success") %>
       
